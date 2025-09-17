@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "4f92ae96-57c7-40b4-99a5-52e6ccba6b94",
+		"name": "Mock Server Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36382021"
+	},
+	"item": [
+		{
+			"name": "Get User Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://985386f6-2308-41b8-b553-46803e701eb8.mock.pstmn.io/api/user/3",
+					"protocol": "https",
+					"host": [
+						"985386f6-2308-41b8-b553-46803e701eb8",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"api",
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user 1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/user/:id",
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n\n\"id\": 1,\n\n\"name\": \"John Doe\",\n\n\"email\": \"john.doe@example.com\"\n\n}"
+				},
+				{
+					"name": "user 2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/user/:id",
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\"\n}"
+				},
+				{
+					"name": "user 3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/user/:id",
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"name\": \"Bob Johnson\",\n    \"email\": \"bob.johnson@example.com\"\n}"
+				}
+			]
+		}
+	]
+}
