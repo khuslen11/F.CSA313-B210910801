@@ -1,9 +1,49 @@
 package edu.sc.csce747.MeetingPlanner;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-public class OrganizationTest {
-	// Add test methods here. 
-    // You are not required to write tests for all classes.
+class OrganizationTest {
+
+    @Test
+    void testDefaultConstructor_initializesPeopleAndRooms() {
+        Organization org = new Organization();
+
+        assertNotNull(org.getEmployees(), "Employees list should not be null");
+        assertNotNull(org.getRooms(), "Rooms list should not be null");
+
+        assertFalse(org.getEmployees().isEmpty(), "Employees list should not be empty");
+        assertFalse(org.getRooms().isEmpty(), "Rooms list should not be empty");
+
+        assertEquals("Greg Gay", org.getEmployees().get(0).getName());
+        assertEquals("2A01", org.getRooms().get(0).getID());
+    }
+
+    @Test
+    void testGetRoom_returnsCorrectRoom() throws Exception {
+        Organization org = new Organization();
+        Room room = org.getRoom("2A03");
+        assertEquals("2A03", room.getID());
+    }
+
+    @Test
+    void testGetRoom_throwsExceptionForInvalidID() {
+        Organization org = new Organization();
+        Exception e = assertThrows(Exception.class, () -> org.getRoom("9999"));
+        assertTrue(e.getMessage().contains("does not exist"));
+    }
+
+    @Test
+    void testGetEmployee_returnsCorrectPerson() throws Exception {
+        Organization org = new Organization();
+        Person p = org.getEmployee("John Rose");
+        assertEquals("John Rose", p.getName());
+    }
+
+    @Test
+    void testGetEmployee_throwsExceptionForInvalidName() {
+        Organization org = new Organization();
+        Exception e = assertThrows(Exception.class, () -> org.getEmployee("Unknown Person"));
+        assertTrue(e.getMessage().contains("does not exist"));
+    }
 }
