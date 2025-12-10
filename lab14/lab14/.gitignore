@@ -1,0 +1,59 @@
+# Maven build directory
+/target/
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# Java classes
+*.class
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Backup files
+*~
+*.bak
+
+# Eclipse (if ever used)
+.project
+.classpath
+.settings/
+
+# Coverage reports
+jacoco.exec
+*.ec
+*.exec
+
+# Checkstyle cache
+checkstyle-cachefile
+
+# Output from tools
+hs_err_pid*
+replay_pid*
+
+# Java compilation output
+/out/
+
+# Environment files
+.env
+*.local
