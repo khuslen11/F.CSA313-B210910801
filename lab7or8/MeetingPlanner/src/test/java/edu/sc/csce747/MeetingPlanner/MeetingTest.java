@@ -77,6 +77,41 @@ class MeetingTest {
     }
 
     @Test
+    void testToString_handlesNullRoomAndNullAttendees() {
+        // attendees and room are null
+        Meeting m = new Meeting(2, 14, 10, 12, null, null, "Valentine");
+        String info = m.toString();
+        assertTrue(info.contains("2/14"));
+        assertTrue(info.contains("10 - 12"));
+        assertTrue(info.contains("Valentine"));
+        assertFalse(info.contains("Attending:"));
+    }
+
+    @Test
+    void testToString_handlesEmptyDescriptionAndAttendees() {
+        ArrayList<Person> attendees = new ArrayList<>();
+        Meeting m = new Meeting(3, 3, 8, 9, attendees, null, "");
+        String info = m.toString();
+        assertTrue(info.contains("3/3"));
+        assertTrue(info.contains("8 - 9"));
+        assertFalse(info.contains(":")); // no description suffix
+    }
+
+    @Test
+    void testDefaultConstructor_settersProduceValidToString() {
+        Meeting m = new Meeting();
+        m.setMonth(9);
+        m.setDay(9);
+        m.setStartTime(7);
+        m.setEndTime(8);
+        m.setDescription("Daily");
+        String info = m.toString();
+        assertTrue(info.contains("9/9"));
+        assertTrue(info.contains("7 - 8"));
+        assertTrue(info.contains("Daily"));
+    }
+
+    @Test
     void testSettersAndGetters() {
         Meeting m = new Meeting(1, 1, "Temp");
         m.setMonth(12);

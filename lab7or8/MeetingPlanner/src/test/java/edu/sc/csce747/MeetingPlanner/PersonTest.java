@@ -63,4 +63,18 @@ class PersonTest {
         Meeting retrieved = p.getMeeting(9, 12, 0);
         assertEquals("Review", retrieved.getDescription());
     }
+
+    // Added tests
+    @Test
+    void testIsBusy_falseWhenNoMeetings() throws TimeConflictException {
+        Person p = new Person("Idle");
+        assertFalse(p.isBusy(1, 1, 9, 10));
+    }
+
+    @Test
+    void testPrintAgenda_dayHeaderPresent() {
+        Person p = new Person("Header");
+        String agenda = p.printAgenda(2, 14);
+        assertTrue(agenda.startsWith("Agenda for 2/14:"));
+    }
 }

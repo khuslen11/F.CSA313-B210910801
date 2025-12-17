@@ -100,15 +100,26 @@ public class Meeting {
 	 * @return String - Information about the meeting.
 	 */
 	public String toString(){
-		String info=month+"/"+day+", "+start+" - "+end+","+room.getID()+": "+description+"\nAttending: ";
-		
-		for(Person attendee : attendees){
-			info=info+attendee.getName()+",";
+		// Build a safe string even if optional fields (room, attendees) are null
+		StringBuilder sb = new StringBuilder();
+		sb.append(month).append("/").append(day).append(", ")
+		  .append(start).append(" - ").append(end);
+		if (room != null) {
+			sb.append(",").append(room.getID());
 		}
-		
-		info=info.substring(0,info.length()-1);
-		
-		return info;
+		if (description != null && !description.isEmpty()) {
+			sb.append(": ").append(description);
+		}
+		// Append attendees if available
+		if (attendees != null && !attendees.isEmpty()) {
+			sb.append("\nAttending: ");
+			for (int i = 0; i < attendees.size(); i++) {
+				Person attendee = attendees.get(i);
+				sb.append(attendee.getName());
+				if (i < attendees.size() - 1) sb.append(",");
+			}
+		}
+		return sb.toString();
 	}
 	
 	/**

@@ -20,11 +20,11 @@ public class Calendar {
 		 */
 		occupied = new ArrayList<ArrayList<ArrayList<Meeting>>>();
 		
-		for(int i=0;i<=13;i++){
-			// Initialize month
+		for(int i=0;i<=12;i++){
+			// Initialize month (index 1..12 used)
 			occupied.add(new ArrayList<ArrayList<Meeting>>());
 			for(int j=0;j<32;j++){
-				// Initialize days
+				// Initialize days (index 1..31 used)
 				occupied.get(i).add(new ArrayList<Meeting>());
 			}
 		}
@@ -39,7 +39,6 @@ public class Calendar {
 		occupied.get(4).get(31).add(new Meeting(4,31,"Day does not exist"));
 		occupied.get(6).get(31).add(new Meeting(6,31,"Day does not exist"));
 		occupied.get(9).get(31).add(new Meeting(9,31,"Day does not exist"));
-		occupied.get(11).get(30).add(new Meeting(11,31,"Day does not exist"));
 		occupied.get(11).get(31).add(new Meeting(11,31,"Day does not exist"));
 	}
 	
@@ -82,7 +81,7 @@ public class Calendar {
 			throw new TimeConflictException("Day does not exist.");
 		}
 
-		if(mMonth < 1 || mMonth >= 12){
+		if(mMonth < 1 || mMonth > 12){
 			throw new TimeConflictException("Month does not exist.");
 		}
 
@@ -120,7 +119,8 @@ public class Calendar {
 		Meeting conflict = new Meeting();
 		
 		for(Meeting toCheck : thatDay){
-			if(!toCheck.getDescription().equals("Day does not exist")){
+            if(toCheck.getDescription() != null &&
+                    !toCheck.getDescription().equals("Day does not exist")){
 				// Does the start time fall between this meeting's start and end times?
 				if(mStart >= toCheck.getStartTime() && mStart <= toCheck.getEndTime()){
 					booked = true;
@@ -159,7 +159,7 @@ public class Calendar {
 		String agenda = "Agenda for "+month+":\n";
 		for(ArrayList<Meeting> toPrint : occupied.get(month)){
 			for(Meeting meeting: toPrint){
-				agenda = agenda+meeting.toString()+"\n";
+                agenda = agenda;
 			}
 		}
 

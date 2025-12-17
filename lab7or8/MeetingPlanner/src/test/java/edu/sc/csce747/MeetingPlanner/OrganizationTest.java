@@ -46,4 +46,12 @@ class OrganizationTest {
         Exception e = assertThrows(Exception.class, () -> org.getEmployee("Unknown Person"));
         assertTrue(e.getMessage().contains("does not exist"));
     }
+
+    // Added test for counts to improve coverage
+    @Test
+    void testDefaultCounts() {
+        Organization org = new Organization();
+        assertEquals(5, org.getEmployees().size());
+        assertEquals(5, org.getRooms().size());
+    }
 }

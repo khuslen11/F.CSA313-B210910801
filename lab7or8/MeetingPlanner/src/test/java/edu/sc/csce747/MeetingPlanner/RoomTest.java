@@ -63,4 +63,18 @@ class RoomTest {
         Meeting retrieved = r.getMeeting(8, 10, 0);
         assertEquals("Review Session", retrieved.getDescription());
     }
+
+    // Added tests
+    @Test
+    void testIsBusy_falseWhenNoMeetings() throws TimeConflictException {
+        Room r = new Room("X1");
+        assertFalse(r.isBusy(1, 2, 9, 10));
+    }
+
+    @Test
+    void testPrintAgenda_dayHeaderPresent() {
+        Room r = new Room("X2");
+        String agenda = r.printAgenda(3, 3);
+        assertTrue(agenda.startsWith("Agenda for 3/3:"));
+    }
 }
